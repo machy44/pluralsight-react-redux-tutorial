@@ -1,6 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import PropTypes from "prop-types";
+import * as courseActions from "../actions/courseActions";
 
-export default class CoursesPage extends Component {
+class CoursesPage extends Component {
   constructor(props, context) {
     super(props, context);
 
@@ -12,28 +16,56 @@ export default class CoursesPage extends Component {
   }
 
   onTitleChange(event) {
-    const { course } = this.state;
+    const course = this.state.course;
     course.title = event.target.value;
-    console.log(course);
     this.setState({
       course: course
     });
   }
 
   onClickSave() {
-    const { title } = this.state.course;
-    alert(`Saving ${title}`);
+    this.props.actions.createCourse(this.state.course);
+  }
+
+  courseRow(course, index) {
+    return <div key={index}>{course.title}</div>;
   }
 
   render() {
-    const { course } = this.state;
     return (
       <div>
         <h1>Courses</h1>
+        {this.props.courses.map(this.courseRow)}
         <h2>Add Courses</h2>
-        <input type="text" onChange={this.onTitleChange} value={course.title} />
+        <input
+          type="text"
+          onChange={this.onTitleChange}
+          value={this.state.course.title}
+        />
         <input type="submit" value="save" onClick={this.onClickSave} />
       </div>
     );
   }
 }
+
+CoursesPage.propTypes = {
+  courses: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired
+};
+
+function mapStateToProps(state, ownProps) {
+  return {
+    courses: state.courses // courses from combineReducers -> rootReducer
+  };
+}
+
+//we dispatch action creator -> dispatch trigger our flow through redux
+function mapDispatchToProps(dispatch) {
+  return {
+    // createCourse: course => dispatch(courseActions.createCourse(course))
+    //all actions from courseActions file
+    actions: bindActionCreators(courseActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CoursesPage);
