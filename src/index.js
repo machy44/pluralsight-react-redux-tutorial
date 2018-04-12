@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, browserHistory, Switch, Route } from "react-router-dom";
 import configureStore from "./store/configureStore";
 import { Provider } from "react-redux";
 import Header from "./components/common/header";
@@ -30,7 +30,7 @@ const App = () => (
 
 render(
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter history={browserHistory}>
       <App />
     </BrowserRouter>
   </Provider>,
