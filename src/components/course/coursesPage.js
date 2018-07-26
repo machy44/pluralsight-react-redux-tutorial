@@ -17,7 +17,6 @@ class CoursesPage extends Component {
   // }
   redirectToAddCoursePage() {
     const { history } = this.props;
-    console.log('history', history);
     history.push("/course");
   }
 
@@ -59,5 +58,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(CoursesPage)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(CoursesPage)
 );

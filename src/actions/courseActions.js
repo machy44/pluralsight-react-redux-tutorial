@@ -5,6 +5,14 @@ export function loadCoursesSuccess(courses) {
   return { type: types.LOAD_COURSES_SUCCESS, courses };
 }
 
+export function createCourseSuccess(course) {
+  return { type: types.CREATE_COURSE_SUCCESS, course };
+}
+
+export function updateCourseSuccess(course) {
+  return { type: types.UPDATE_COURSE_SUCCESS, course };
+}
+
 export function loadCourses() {
   return function(dispatch) {
     return courseApi
@@ -16,13 +24,6 @@ export function loadCourses() {
         throw error;
       });
   };
-}
-
-export function createCourseSuccess(course) {
-  return { type: types.CREATE_COURSE_SUCCESS, course };
-}
-export function updateCourseSuccess(course) {
-  return { type: types.UPDATE_COURSE_SUCCESS, course };
 }
 
 export function saveCourse(course) {

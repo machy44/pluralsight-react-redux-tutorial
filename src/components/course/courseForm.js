@@ -11,7 +11,6 @@ const CourseForm = ({
   loading,
   errors
 }) => {
-  console.log("allAuthors", allAuthors);
   return (
     <form>
       <h1>Manage Course</h1>
@@ -54,7 +53,7 @@ const CourseForm = ({
         disabled={loading}
         value={loading ? "Saving.." : "Save"}
         className="btn btn-primary"
-        error={onSave}
+        onClick={onSave}
       />
     </form>
   );

@@ -10,7 +10,6 @@ const SelectInput = ({
   error,
   options
 }) => {
-  console.log("options", options);
   return (
     <div className="form-group">
       <label htmlFor={name}>{label}</label>

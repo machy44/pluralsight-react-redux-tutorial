@@ -31,7 +31,6 @@ class ManageCoursePage extends Component {
   }
 
   render() {
-    console.log("this.state", this.state);
     return (
       <CourseForm
         allAuthors={this.props.authors}
@@ -78,4 +77,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ManageCoursePage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ManageCoursePage);
