@@ -11,6 +11,7 @@ const CourseForm = ({
   loading,
   errors
 }) => {
+  console.log("allAuthors", allAuthors);
   return (
     <form>
       <h1>Manage Course</h1>
