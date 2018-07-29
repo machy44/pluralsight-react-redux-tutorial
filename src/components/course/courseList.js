@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import CourseListRow from "./courseListRow";
 import PropTypes from "prop-types";
 

@@ -19,7 +19,7 @@ class ManageCoursePage extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.course.id != nextProps.course.id) {
+    if (this.props.course.id !== nextProps.course.id) {
       // Necessary to populate form when existing course is loaded directly
       this.setState({ course: Object.assign({}, nextProps.course) });
     }
@@ -78,15 +78,18 @@ function mapStateToProps(state, ownProps) {
     length: "",
     category: ""
   };
+
   if (courseId && state.courses.length > 0) {
     course = getCourseById(state.courses, courseId);
   }
+
   const authorsFormattedForDropdown = state.authors.map(author => {
     return {
       value: author.id,
       text: author.firstName + " " + author.lastName
     };
   });
+
   return {
     course,
     authors: authorsFormattedForDropdown

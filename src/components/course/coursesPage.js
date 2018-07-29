@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
 import * as courseActions from "../../actions/courseActions";
 import CourseList from "./courseList";
-import { BrowserHistory, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class CoursesPage extends Component {
   constructor(props, context) {
