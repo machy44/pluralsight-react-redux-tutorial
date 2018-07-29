@@ -4,7 +4,6 @@ import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
 import * as courseActions from "../../actions/courseActions";
 import CourseList from "./courseList";
-import { withRouter } from "react-router-dom";
 
 class CoursesPage extends Component {
   constructor(props, context) {
@@ -16,8 +15,7 @@ class CoursesPage extends Component {
   //   return <div key={index}>{course.title}</div>;
   // }
   redirectToAddCoursePage() {
-    const { history } = this.props;
-    history.push("/course");
+    this.props.history.push('/course');
   }
 
   render() {
@@ -57,9 +55,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(CoursesPage)
-);
+export default connect( mapStateToProps, mapDispatchToProps)(CoursesPage);

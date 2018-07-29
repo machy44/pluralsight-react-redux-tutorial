@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { render } from "react-dom";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import createHistory from 'history/createBrowserHistory'
+import { Router, Switch, Route } from "react-router-dom";
+import { createBrowserHistory } from 'history'
 import configureStore from "./store/configureStore";
 import { Provider } from "react-redux";
 import Header from "./components/common/header";
@@ -11,10 +11,12 @@ import ManageCoursePage from "./components/course/manageCoursePage";
 import { loadCourses } from "./actions/courseActions";
 import { loadAuthors } from "./actions/authorActions";
 import {connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 const store = configureStore();
 store.dispatch(loadCourses());
 store.dispatch(loadAuthors());
+const history = createBrowserHistory()
 
 const App = ({loading}) => (
   <div>
@@ -43,13 +45,13 @@ App.propTypes = {
   loading: PropTypes.bool.isRequired
 }
 
-const AppConnected = connect(mapStateToProps)(App);
+const AppConnected = withRouter(connect(mapStateToProps)(App));
 
 render(
   <Provider store={store}>
-    <BrowserRouter history={createHistory}>
+    <Router history={history}>
       <AppConnected />
-    </BrowserRouter>
+    </Router>
   </Provider>,
   document.getElementById("root")
 );
