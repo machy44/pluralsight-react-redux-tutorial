@@ -12,6 +12,8 @@ import { loadCourses } from "./actions/courseActions";
 import { loadAuthors } from "./actions/authorActions";
 import {connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../node_modules/toastr/build/toastr.min.css";
 
 const store = configureStore();
 store.dispatch(loadCourses());
@@ -19,7 +21,7 @@ store.dispatch(loadAuthors());
 const history = createBrowserHistory()
 
 const App = ({loading}) => (
-  <div>
+  <div className="container">
     <Header 
       loading={loading}
     />
