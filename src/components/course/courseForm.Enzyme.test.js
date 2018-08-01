@@ -1,12 +1,14 @@
-const expect = require('expect');
-const React = require('react');
-const { mount, shallow} = require('enzyme')
-const CourseForm = require('./courseForm');
+import React from 'react';
+import expect from 'expect';
+import { mount, shallow, configure } from 'enzyme';
+import CourseForm from './courseForm';
+import Adapter from 'enzyme-adapter-react-16';
 
+configure({adapter: new Adapter()});
 
 function setup() {
   const props = {
-    courses: {}, saving: false, errors: {},
+    course: {}, saving: false, errors: {},
     onSave: () => {},
     onChange: () => {}
   };
