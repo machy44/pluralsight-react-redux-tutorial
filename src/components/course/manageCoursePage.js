@@ -115,7 +115,6 @@ function mapStateToProps(state, ownProps) {
     course = getCourseById(state.courses, courseId);
   }
 
-
   return {
     course,
     authors: authorsFormattedForDropdown(state.authors)
