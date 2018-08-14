@@ -34,6 +34,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "prod": "NODE_ENV=production react-scripts start",
     "build": "react-scripts build",
     "test": "NODE_ENV=development mocha --require tools/testSetup.js --compilers js:babel-core/register \"src/**/*.test.js\"",
     "test:watch": "npm run test -- --watch",
